@@ -1,1 +1,4 @@
-<Solution />
+<Solution>
+  <Project Path="Time.Backend/Time.Backend.csproj" Id="2d04647e-0d69-4348-8637-64051f2b6985" />
+  <Project Path="Time.Frontend/Time.Frontend.csproj" Id="a9b171c4-15c1-4e10-ae93-c15522fc76f8" />
+</Solution>
