@@ -81,7 +81,15 @@ public class OPP
         {
             throw new ArgumentOutOfRangeException(nameof(hour), "Error: Las horas deben estar entre 0 y 23.");
         }
-        return hour - 12;
+        if (hour == 0)
+        {
+            hour = 12;
+        }
+        else
+        {
+            hour = hour % 12; 
+        }
+        return hour;
     }
 
     private int ValidMilliseconds(int millisecond)
