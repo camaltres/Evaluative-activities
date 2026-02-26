@@ -12,10 +12,10 @@ public class OPP
     //Constructors
     public OPP()
     {
-        _hour = 23;
-        _minute = 59;
-        _second = 59;
-        _millisecond = 999;
+        _hour = 0;
+        _minute = 0;
+        _second = 0;
+        _millisecond = 0;
     }
 
     public OPP(int hour)
@@ -71,7 +71,7 @@ public class OPP
     //Methods
     public override string ToString()
     {
-        return $"{Hour:D2}:{Minute:D2}:{Second:D2}:{Millisecond:D}";
+        return $"{Hour:D2}:{Minute:D2}:{Second:D2}:{Millisecond:D3}";
     }
  
     private int ValidHours(int hour)
@@ -125,4 +125,21 @@ public class OPP
         addition = Hour * 3600000 + Minute * 60000 + Second * 1000 + Millisecond;
         return addition;
     }
+
+    public int ToSeconds()
+    {
+        int addition;
+        addition = Hour * 3600 + Minute * 60 + Second;
+        return addition;
+
+    }
+
+    public int ToMinutes()
+    {
+        int addition;
+        addition = Hour * 60 + Minute;
+        return addition;
+    }
+
+
 }
