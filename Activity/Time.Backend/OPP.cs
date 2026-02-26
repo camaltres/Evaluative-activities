@@ -71,17 +71,15 @@ public class OPP
     //Methods
     public override string ToString()
     {
-        int formato;
-        formato = Hour;
-        if (formato <= 23 && formato >= 13)
+        int format;
+        format = Hour;
+        string change = "AM";
+        if (format <= 23 && format >= 12)
         {
-            formato = Hour % 12;
+            format = Hour % 12;
+            change = "PM";
         }
-        if (formato == 0)
-        {
-            formato = 12;
-        }
-        return $"{formato:D2}:{Minute:D2}:{Second:D2}:{Millisecond:D3}";
+        return $"{format:D2}:{Minute:D2}:{Second:D2}:{Millisecond:D3}"+" "+change;
     }
 
  
