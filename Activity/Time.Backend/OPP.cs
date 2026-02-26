@@ -71,23 +71,25 @@ public class OPP
     //Methods
     public override string ToString()
     {
-        return $"{Hour:D2}:{Minute:D2}:{Second:D2}:{Millisecond:D3}";
+        int formato;
+        formato = Hour;
+        if (formato <= 23 && formato >= 13)
+        {
+            formato = Hour % 12;
+        }
+        if (formato == 0)
+        {
+            formato = 12;
+        }
+        return $"{formato:D2}:{Minute:D2}:{Second:D2}:{Millisecond:D3}";
     }
+
  
     private int ValidHours(int hour)
     {
-
         if (hour < 0 || hour > 23)
         {
             throw new ArgumentOutOfRangeException(nameof(hour), "Error: Las horas deben estar entre 0 y 23.");
-        }
-        if (hour == 0)
-        {
-            hour = 12;
-        }
-        else
-        {
-            hour = hour % 12; 
         }
         return hour;
     }

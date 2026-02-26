@@ -3,10 +3,10 @@
 try
 {
     var t1 = new OPP();
-    var t2 = new OPP(2);
+    var t2 = new OPP(14);
     var t3 = new OPP(9, 34);
-    var t4 = new OPP(7, 45, 56);
-    var t5 = new OPP(11, 3, 45, 678);
+    var t4 = new OPP(19, 45, 56);
+    var t5 = new OPP(23, 3, 45, 678);
 
     var times = new List<OPP> { t1, t2, t3, t4, t5 };
 
@@ -23,4 +23,5 @@ catch (Exception exception)
 {
     Console.WriteLine(exception.Message);
 }
+
 
