@@ -2,14 +2,14 @@
 
 public class OPP
 {
-
+    //Atributes
     private int _hour;
     private int _millisecond;
     private int _minute;
     private int _second;
 
 
-
+    //Constructors
     public OPP()
     {
         _hour = 23;
@@ -43,11 +43,11 @@ public class OPP
         Second = second;
         Millisecond = millisecond;
     }
+    //Properties
     public int Hour 
     {
         get => _hour;
         set => _hour = ValidHours(value);
-
     }
 
     public int Millisecond 
@@ -68,12 +68,12 @@ public class OPP
         set => _second = ValidSecond(value);
     }
 
-
+    //Methods
     public override string ToString()
     {
         return $"{Hour:D2}:{Minute:D2}:{Second:D2}:{Millisecond:D}";
     }
-
+ 
     private int ValidHours(int hour)
     {
 
@@ -119,4 +119,10 @@ public class OPP
         return second;
     }
 
+    public int ToMilliseconds()
+    {
+        int addition;
+        addition = Hour * 3600000 + Minute * 60000 + Second * 1000 + Millisecond;
+        return addition;
+    }
 }
