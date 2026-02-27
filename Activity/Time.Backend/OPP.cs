@@ -1,4 +1,6 @@
-﻿namespace Time.Backend;
+﻿using System.Numerics;
+
+namespace Time.Backend;
 
 public class OPP
 {
@@ -87,7 +89,7 @@ public class OPP
     {
         if (hour < 0 || hour > 23)
         {
-            throw new ArgumentOutOfRangeException(nameof(hour), "Error: Las horas deben estar entre 0 y 23.");
+            throw new ArgumentOutOfRangeException(nameof(hour), $"La hora: {hour}, debe estar entre 0 y 23.");
         }
         return hour;
     }
@@ -141,5 +143,25 @@ public class OPP
         return addition;
     }
 
+    public bool IsOtherDay(OPP day)
+    {
+        this.ToMilliseconds();
+        day.ToMilliseconds();
+
+        int time1 = 86400000;
+        if (this.ToMilliseconds() + day.ToMilliseconds() >= time1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public int Add(OPP time)
+    {
+        
+    }
 
 }

@@ -3,7 +3,7 @@
   <Class Name="Time.Backend.OPP">
     <Position X="7.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAACEACAEAAAAAAIEAAAAACIABAAAAAAQAAA=</HashCode>
+      <HashCode>AAAQCAAAAACEACAEAAAgAAIEAAAIACIABAAAAAAQAgA=</HashCode>
       <FileName>OPP.cs</FileName>
     </TypeIdentifier>
   </Class>
