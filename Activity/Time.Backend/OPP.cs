@@ -78,7 +78,7 @@ public class OPP
         string change = "AM";
         if (format <= 23 && format >= 12)
         {
-            format = Hour % 12;
+            format = format % 12;
             change = "PM";
         }
         return $"{format:D2}:{Minute:D2}:{Second:D2}:{Millisecond:D3}"+" "+change;
@@ -159,9 +159,82 @@ public class OPP
         }
     }
 
-    public int Add(OPP time)
+    public string Add(OPP time)
     {
-        
+        this.ToMilliseconds();
+        time.ToMilliseconds();
+
+        int number = this.ToMilliseconds();
+        int hourT = number / 3600000;
+        int minuteT = (number % 3600000) / 60000;
+        int secondT = (number % 60000) / 1000;
+        int millisecondT = number % 1000;
+
+        int numberS = time.ToMilliseconds();
+        int hourS = numberS / 3600000;
+        int minuteS = (numberS % 3600000) / 60000;
+        int secondS = (numberS % 60000) / 1000;
+        int millisecondS = numberS % 1000;
+
+        int additionH = hourT + hourS;
+        int additionM = minuteT + minuteS;
+        int additionS = secondT + secondS;
+        int additionMi = millisecondT + millisecondS;
+
+        int subtractionMi;
+        int subtractionS;
+        int subtractionM;
+        int subtractionH;
+
+        int subtractionH2 = 0;
+        string change = "AM";
+
+
+        if (additionMi > 1000)
+        {
+            subtractionMi = additionMi - 1000;
+            additionS = additionS + 1;
+        }
+        else
+        {
+            subtractionMi = additionMi;
+        }
+        if (additionS > 60)
+        {
+            subtractionS = additionS - 60;
+            additionM = additionM + 1;
+        }
+        else
+        {
+            subtractionS = additionS;
+        }
+        if (additionM > 60)
+        {
+            subtractionM = additionM - 60;
+            additionH = additionH + 1;
+        }
+        else
+        {
+            subtractionM = additionM;
+        }
+        if (additionH > 24)
+        {
+            subtractionH = additionH - 24;
+            subtractionH2 = subtractionH;
+
+        }
+        else
+        {
+            subtractionH = additionH;
+            subtractionH2 = subtractionH;
+        }
+        if (subtractionH2 <= 23 && subtractionH2 >= 12)
+        {
+            subtractionH2 = subtractionH2 % 12;
+            change = "PM";
+        }
+
+        return $"{subtractionH2:D2}:{subtractionM:D2}:{subtractionS:D2}:{subtractionMi:D3}"+" "+change;
     }
 
 }
