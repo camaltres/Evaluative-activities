@@ -70,7 +70,7 @@ public class OPP
         set => _second = ValidSecond(value);
     }
 
-    //Methods
+    //Override
     public override string ToString()
     {
         int format;
@@ -84,30 +84,21 @@ public class OPP
         return $"{format:D2}:{Minute:D2}:{Second:D2}:{Millisecond:D3}"+" "+change;
     }
 
- 
+    //Methods
     private int ValidHours(int hour)
     {
         if (hour < 0 || hour > 23)
         {
-            throw new ArgumentOutOfRangeException(nameof(hour), $"La hora: {hour}, debe estar entre 0 y 23.");
+            throw new ArgumentException($"The hour: {hour}, is not valid.");
         }
         return hour;
-    }
-
-    private int ValidMilliseconds(int millisecond)
-    {
-        if (millisecond < 0 || millisecond > 999)
-        {
-            throw new ArgumentOutOfRangeException(nameof(millisecond), "Error: Los milisegundos deben estar entre 0 y 999.");
-        }
-        return millisecond;
     }
 
     private int ValidMinute(int minute)
     {
         if (minute < 0 || minute > 59)
         { 
-            throw new ArgumentOutOfRangeException(nameof(minute), "Error: Los minutos deben estar entre 0 y 59.");
+            throw new ArgumentException ($"The minute: {minute}, is not valid.");
         }
         return minute;
     }
@@ -116,9 +107,18 @@ public class OPP
     {
         if (second < 0 || second > 59)
         {
-            throw new ArgumentOutOfRangeException(nameof(second), "Error: Los segundos deben estar entre 0 y 59.");
+            throw new ArgumentException($"The seconds: {second}, is not valid.");
         }
         return second;
+    }
+
+    private int ValidMilliseconds(int millisecond)
+    {
+        if (millisecond < 0 || millisecond > 999)
+        {
+            throw new ArgumentException($"The millisecond: {millisecond}, is not valid.");
+        }
+        return millisecond;
     }
 
     public int ToMilliseconds()
@@ -149,7 +149,7 @@ public class OPP
         day.ToMilliseconds();
 
         int time1 = 86400000;
-        if (this.ToMilliseconds() + day.ToMilliseconds() >= time1)
+        if (this.ToMilliseconds() + day.ToMilliseconds() > time1)
         {
             return true;
         }
@@ -221,7 +221,6 @@ public class OPP
         {
             subtractionH = additionH - 24;
             subtractionH2 = subtractionH;
-
         }
         else
         {
